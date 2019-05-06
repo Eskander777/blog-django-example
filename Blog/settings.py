@@ -148,7 +148,7 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     
     # Конфигурация статических ресурсов
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIS_ROOT = 'staticfiles'
+    STATIC_ROOT = 'staticfiles'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
