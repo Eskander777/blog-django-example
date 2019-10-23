@@ -52,7 +52,7 @@ def edit_post(request, blog_id):
 def check_topic_owner(post_owner, current_user):
     """
     Проверяет, что пользователь, связанный с темой является 
-        текущим пользователем"
+        текущим пользователем
     """
     if post_owner != current_user:
         raise Http404
