@@ -1,4 +1,5 @@
 {% extends "blogs/base.html" %}
+{% load bootstrap3 %}
 
 {% block header %}
   <div class='jumbotron'>
@@ -7,10 +8,11 @@
 {% endblock header %}
 
 {% block content %}
-<h3>
-  <a href="{% url 'blogs:new_post' %}">Add a Post:</a>
-</h3>
 
+{% if user.is_authenticated %}
+  <a href="{% url 'blogs:new_post' %}">
+    <button class="btn btn-primary">Add post</button>
+  </a>
 <ul>
   {% for blog in blogs %}
     <li>
@@ -29,6 +31,14 @@
   {% empty %}
     <li>No posts have been added yet.</li>
   {% endfor %}
+  {% else %}
+  <h3>
+  <a href="{% url 'users:register' %}">Register</a>
+  or
+  <a href="{% url 'users:login' %}">Login</a>
+  to add or edit a post
+  </h3>
+  {% endif %}
 </ul>
 
 {% endblock content %}
