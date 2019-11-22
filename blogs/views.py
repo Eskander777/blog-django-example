@@ -7,10 +7,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def index(request):
     blogs = BlogPost.objects.order_by('-date_added')
     context = {'blogs': blogs}
     return render(request, 'blogs/index.html', context)
+
 
 @login_required
 def new_post(request):
@@ -30,7 +32,8 @@ def new_post(request):
     context = {'form': form}
     return render(request, 'blogs/new_post.html', context)
 
-@login_required    
+
+@login_required
 def edit_post(request, blog_id):
     """Редактирует существующую запись."""
     blog = BlogPost.objects.get(id=blog_id)
@@ -48,6 +51,7 @@ def edit_post(request, blog_id):
                                                     
     context = {'blog': blog, 'form': form}
     return render(request, 'blogs/edit_post.html', context)
+
 
 def check_topic_owner(post_owner, current_user):
     """
