@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from .models import BlogPost
 from .forms import BlogPostForm
@@ -59,4 +59,4 @@ def check_topic_owner(post_owner, current_user):
         текущим пользователем
     """
     if post_owner != current_user:
-        raise HttpResponse('You are not allowed to edit this post!')
+        raise Http404
